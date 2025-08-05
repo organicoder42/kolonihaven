@@ -1,46 +1,110 @@
-# Getting Started with Create React App
+# 🌱 Kolonihaven - Garden Flora & Fauna Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+En React web app til at tracke flora og fauna i din have med multi-bruger support og dansk brugergrænseflade.
+
+## ✨ Funktioner
+
+- **🔐 Multi-bruger autentificering** - Sikker login/registrering med Supabase Auth
+- **🌿 Artskatalog** - Registrer og administrer arter med danske og videnskabelige navne
+- **👁️ Observationslog** - Log daglige observationer med dato, placering og fotos
+- **📊 Dashboard** - Oversigt over biodiversitet og seneste aktivitet
+- **🌍 Havezoner** - Organiser din have i forskellige zoner med forskellige forhold
+- **📈 Indsigter** - Biodiversitetsanalyse og forslag til forbedringer
+- **🇩🇰 Dansk interface** - Komplet dansk brugergrænseflade
+
+## 🚀 Hurtig Start
+
+### Forudsætninger
+- Node.js 16+ og npm
+- Supabase konto
+
+### Installation
+
+1. **Installer dependencies**
+   ```bash
+   npm install
+   ```
+
+2. **Opsæt Supabase**
+   - Opret projekt på [supabase.com](https://supabase.com)
+   - Kør SQL schema fra `database-schema.sql` i SQL Editor
+   - Kopier Project URL og anon key
+
+3. **Miljøvariabler**
+   ```bash
+   cp .env.example .env
+   # Udfyld med dine Supabase credentials
+   ```
+
+4. **Start udviklingsserver**
+   ```bash
+   npm start
+   ```
+
+Se `SETUP.md` for detaljeret opsætningsguide.
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React 18 + TypeScript
+- **Backend**: Supabase (PostgreSQL + Auth + Storage)
+- **Styling**: Tailwind CSS
+- **Routing**: React Router
+- **State**: React Query
+- **Charts**: Chart.js
+
+## 📱 Mobile-first Design
+
+Appen er designet mobile-first for optimal brug i haven på telefon eller tablet.
+
+## 🗃️ Database Schema
+
+- **profiles** - Brugerprofiler
+- **species** - Artskataloget (delt mellem brugere)
+- **observations** - Observationer med bruger-tilknytning
+- **garden_zones** - Havezoner
+- **user_gardens** - Haver (til fremtidig multi-have support)
+
+## 🔒 Sikkerhed
+
+- Row Level Security (RLS) på alle tabeller
+- Brugere kan kun redigere deres egne data
+- Arter og observationer deles læsevenligt mellem brugere
+
+## 🚧 Udviklingsstatus
+
+**Implementeret:**
+- ✅ Autentificering og brugerstyring
+- ✅ Dashboard med grundlæggende statistikker
+- ✅ Artskatalog visning med søgning og filtrering
+- ✅ Responsive design med dansk UI
+
+**Kommende funktioner:**
+- 📝 CRUD operationer for arter
+- 🔍 Observation logging system
+- 📊 Charts og datavisualisering
+- 📷 Foto upload til observationer
+- 🗺️ Interaktivt havekort
+- 🌐 Integration med eksterne APIs (iNaturalist, GBIF)
 
 ## Available Scripts
 
-In the project directory, you can run:
-
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Runs the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it.
 
 ### `npm run build`
+Builds the app for production to the `build` folder.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `npm test`
+Launches the test runner in interactive watch mode.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📄 Licens
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+MIT License - fri til personlig brug og tilpasning.
 
-### `npm run eject`
+## 🤝 Bidrag
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Dette er et personligt projekt, men du er velkommen til at forke og tilpasse til dine egne behov.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Happy gardening! 🌸🦋**

@@ -1,0 +1,160 @@
+{
+  "navigation": {
+    "home": "Hjem",
+    "species": "Arter",
+    "observations": "Observationer",
+    "insights": "Indsigter",
+    "profile": "Min Profil",
+    "zones": "Havezoner"
+  },
+  "auth": {
+    "login": "Log ind",
+    "signup": "Tilmeld",
+    "logout": "Log ud",
+    "email": "Email",
+    "password": "Kodeord",
+    "confirmPassword": "Bekræft kodeord",
+    "forgotPassword": "Glemt kodeord?",
+    "fullName": "Fulde navn",
+    "loginTitle": "Log ind på din konto",
+    "signupTitle": "Opret ny konto",
+    "alreadyHaveAccount": "Har du allerede en konto?",
+    "dontHaveAccount": "Har du ikke en konto?",
+    "loginError": "Fejl ved login",
+    "signupError": "Fejl ved tilmelding"
+  },
+  "species": {
+    "title": "Arter",
+    "addNew": "Tilføj ny art",
+    "editSpecies": "Rediger art",
+    "deleteSpecies": "Slet art",
+    "commonNameDa": "Dansk navn",
+    "commonNameLatin": "Latinsk navn",
+    "scientificName": "Videnskabeligt navn",
+    "type": "Type",
+    "category": "Kategori",
+    "nativeStatus": "Hjemmehørende",
+    "description": "Beskrivelse",
+    "flora": "Flora",
+    "fauna": "Fauna",
+    "categories": {
+      "tree": "Træ",
+      "shrub": "Busk",
+      "flower": "Blomst",
+      "grass": "Græs",
+      "herb": "Urt",
+      "moss": "Mos",
+      "fern": "Bregne",
+      "bird": "Fugl",
+      "mammal": "Pattedyr",
+      "insect": "Insekt",
+      "spider": "Edderkop",
+      "reptile": "Krybdyr",
+      "amphibian": "Padde"
+    }
+  },
+  "observations": {
+    "title": "Observationer",
+    "addNew": "Log ny observation",
+    "editObservation": "Rediger observation",
+    "deleteObservation": "Slet observation",
+    "dateObserved": "Dato observeret",
+    "location": "Placering i haven",
+    "quantity": "Antal",
+    "growthStage": "Vækststadie",
+    "healthStatus": "Sundhedstilstand",
+    "notes": "Noter",
+    "photo": "Foto",
+    "recentObservations": "Seneste observationer",
+    "myObservations": "Mine observationer",
+    "allObservations": "Alle observationer",
+    "healthStatuses": {
+      "excellent": "Fremragende",
+      "good": "God",
+      "fair": "Nogenlunde",
+      "poor": "Dårlig",
+      "dead": "Død"
+    },
+    "growthStages": {
+      "seedling": "Spire",
+      "juvenile": "Ung",
+      "mature": "Moden",
+      "flowering": "Blomstrende",
+      "fruiting": "Frugtbærende",
+      "dormant": "Hvilende"
+    }
+  },
+  "dashboard": {
+    "title": "Kontrolpanel",
+    "totalSpecies": "Total antal arter",
+    "recentObservations": "Seneste observationer",
+    "biodiversityOverTime": "Biodiversitet over tid",
+    "speciesDistribution": "Artsfordeling",
+    "nativeVsNonNative": "Hjemmehørende vs ikke-hjemmehørende",
+    "seasonalPresence": "Sæsonbestemt tilstedeværelse",
+    "filterByUser": "Filtrer efter bruger",
+    "allUsers": "Alle brugere"
+  },
+  "zones": {
+    "title": "Havezoner",
+    "addNew": "Tilføj ny zone",
+    "editZone": "Rediger zone",
+    "deleteZone": "Slet zone",
+    "zoneName": "Zonenavn",
+    "description": "Beskrivelse",
+    "conditions": "Forhold",
+    "sunConditions": {
+      "fullSun": "Fuld sol",
+      "partialSun": "Delvis sol",
+      "shade": "Skygge"
+    },
+    "soilTypes": {
+      "clay": "Lerjord",
+      "sand": "Sandjord",
+      "loam": "Muldjord",
+      "peat": "Tørvejord"
+    },
+    "moistureLevels": {
+      "dry": "Tør",
+      "moist": "Fugtig",
+      "wet": "Våd"
+    }
+  },
+  "insights": {
+    "title": "Biodiversitetsindsigter",
+    "nativeSpeciesRatio": "Andel hjemmehørende arter",
+    "pollinatorFriendly": "Bestøvervenlige planter",
+    "missingNiches": "Manglende økologiske nicher",
+    "companionPlanting": "Ledsageplantningsforslag",
+    "suggestions": {
+      "needNightBlooming": "I mangler natblomstrende planter",
+      "needEarlyBlooming": "I mangler tidligt blomstrende planter",
+      "needLateSeasonColor": "I mangler sent blomstrende planter",
+      "needNativeTrees": "Overvej flere hjemmehørende træer",
+      "needPollinatorPlants": "Tilføj flere bestøvervenlige planter"
+    }
+  },
+  "common": {
+    "save": "Gem",
+    "cancel": "Annuller",
+    "delete": "Slet",
+    "edit": "Rediger",
+    "add": "Tilføj",
+    "search": "Søg",
+    "filter": "Filtrer",
+    "loading": "Indlæser...",
+    "error": "Fejl",
+    "success": "Succes",
+    "confirm": "Bekræft",
+    "yes": "Ja",
+    "no": "Nej",
+    "close": "Luk",
+    "uploadPhoto": "Upload foto",
+    "removePhoto": "Fjern foto",
+    "today": "I dag",
+    "yesterday": "I går",
+    "thisWeek": "Denne uge",
+    "thisMonth": "Denne måned",
+    "thisYear": "Dette år"
+  }
+}
