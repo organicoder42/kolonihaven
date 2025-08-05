@@ -33,15 +33,38 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     // Get initial session
     const initializeAuth = async () => {
-      const { data: { session } } = await supabase.auth.getSession()
-      setSession(session)
-      setUser(session?.user ?? null)
-      
-      if (session?.user) {
-        await fetchProfile(session.user.id)
+      try {
+        console.log('Initializing auth...')
+        const { data: { session }, error } = await supabase.auth.getSession()
+        console.log('Initial session:', session, 'error:', error)
+        
+        setSession(session)
+        setUser(session?.user ?? null)
+        
+        if (session?.user) {
+          console.log('User found, fetching profile...')
+          // Set a timeout for profile fetching to prevent hanging
+          const profilePromise = fetchProfile(session.user.id)
+          const timeoutPromise = new Promise((_, reject) => 
+            setTimeout(() => reject(new Error('Profile fetch timeout')), 5000)
+          )
+          
+          try {
+            await Promise.race([profilePromise, timeoutPromise])
+          } catch (error) {
+            console.error('Profile fetch failed or timed out:', error)
+            // Continue without profile
+          }
+        } else {
+          console.log('No user session found')
+        }
+        
+        console.log('Auth initialization complete')
+        setLoading(false)
+      } catch (error) {
+        console.error('Error initializing auth:', error)
+        setLoading(false)
       }
-      
-      setLoading(false)
     }
 
     initializeAuth()
@@ -54,7 +77,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setUser(session?.user ?? null)
         
         if (session?.user) {
-          await fetchProfile(session.user.id)
+          // Add timeout for profile fetching in auth state change too
+          const profilePromise = fetchProfile(session.user.id)
+          const timeoutPromise = new Promise((_, reject) => 
+            setTimeout(() => reject(new Error('Profile fetch timeout')), 5000)
+          )
+          
+          try {
+            await Promise.race([profilePromise, timeoutPromise])
+          } catch (error) {
+            console.error('Profile fetch failed or timed out:', error)
+          }
         } else {
           setProfile(null)
         }
@@ -96,6 +129,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
         if (createError) {
           console.error('Error creating profile:', createError)
+          setProfile(null)
           return
         }
 
@@ -106,6 +140,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       if (error) {
         console.error('Error fetching profile:', error)
+        setProfile(null)
         return
       }
 
@@ -113,6 +148,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setProfile(data)
     } catch (error) {
       console.error('Error in fetchProfile:', error)
+      setProfile(null)
     }
   }
 

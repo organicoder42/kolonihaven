@@ -29,8 +29,6 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<Hjem />} />
         <Route path="/arter" element={<Arter />} />
-        <Route path="/observationer" element={<div>Observationer page - Coming soon</div>} />
-        <Route path="/zoner" element={<div>Zoner page - Coming soon</div>} />
         <Route path="/indsigter" element={<div>Indsigter page - Coming soon</div>} />
       </Routes>
     </Layout>

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { supabase } from '../services/supabase'
 import { Species } from '../types/database.types'
+import { SpeciesForm } from '../components/species/SpeciesForm'
 import da from '../locales/da.json'
 
 export const Arter: React.FC = () => {
   const [species, setSpecies] = useState<Species[]>([])
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
+  const [editingSpecies, setEditingSpecies] = useState<Species | null>(null)
   const [filter, setFilter] = useState<'all' | 'flora' | 'fauna'>('all')
   const [searchTerm, setSearchTerm] = useState('')
 
@@ -28,6 +30,38 @@ export const Arter: React.FC = () => {
     } finally {
       setLoading(false)
     }
+  }
+
+  const handleEdit = (species: Species) => {
+    setEditingSpecies(species)
+    setShowForm(true)
+  }
+
+  const handleDelete = async (speciesId: string) => {
+    if (!window.confirm('Er du sikker på, at du vil slette denne art?')) return
+
+    try {
+      const { error } = await supabase
+        .from('species')
+        .delete()
+        .eq('id', speciesId)
+
+      if (error) throw error
+      fetchSpecies()
+    } catch (error) {
+      console.error('Error deleting species:', error)
+    }
+  }
+
+  const handleFormSave = () => {
+    setShowForm(false)
+    setEditingSpecies(null)
+    fetchSpecies()
+  }
+
+  const handleFormCancel = () => {
+    setShowForm(false)
+    setEditingSpecies(null)
   }
 
   const filteredSpecies = species.filter(s => {
@@ -116,13 +150,29 @@ export const Arter: React.FC = () => {
                 <h3 className="text-lg font-semibold text-gray-900">
                   {species.common_name_da}
                 </h3>
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                  species.type === 'flora' 
-                    ? 'bg-green-100 text-green-800' 
-                    : 'bg-blue-100 text-blue-800'
-                }`}>
-                  {species.type === 'flora' ? da.species.flora : da.species.fauna}
-                </span>
+                <div className="flex items-center space-x-2">
+                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                    species.type === 'flora' 
+                      ? 'bg-green-100 text-green-800' 
+                      : 'bg-blue-100 text-blue-800'
+                  }`}>
+                    {species.type === 'flora' ? da.species.flora : da.species.fauna}
+                  </span>
+                  <div className="flex space-x-1">
+                    <button
+                      onClick={() => handleEdit(species)}
+                      className="text-blue-600 hover:text-blue-800 text-sm"
+                    >
+                      {da.common.edit}
+                    </button>
+                    <button
+                      onClick={() => handleDelete(species.id)}
+                      className="text-red-600 hover:text-red-800 text-sm"
+                    >
+                      {da.common.delete}
+                    </button>
+                  </div>
+                </div>
               </div>
               
               <p className="text-sm text-gray-600 italic mb-2">
@@ -155,22 +205,13 @@ export const Arter: React.FC = () => {
         </div>
       )}
 
-      {/* Simple form modal placeholder */}
+      {/* Species Form Modal */}
       {showForm && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg p-6 w-full max-w-md">
-            <h2 className="text-lg font-semibold mb-4">{da.species.addNew}</h2>
-            <p className="text-gray-600 mb-4">
-              Artskatalog funktionalitet kommer snart. I mellemtiden kan du tilføje arter direkte i databasen.
-            </p>
-            <button
-              onClick={() => setShowForm(false)}
-              className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md text-sm font-medium"
-            >
-              {da.common.close}
-            </button>
-          </div>
-        </div>
+        <SpeciesForm
+          species={editingSpecies || undefined}
+          onSave={handleFormSave}
+          onCancel={handleFormCancel}
+        />
       )}
     </div>
   )

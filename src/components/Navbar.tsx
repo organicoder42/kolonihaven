@@ -10,8 +10,6 @@ export const Navbar: React.FC = () => {
   const navigation = [
     { name: da.navigation.home, href: '/' },
     { name: da.navigation.species, href: '/arter' },
-    { name: da.navigation.observations, href: '/observationer' },
-    { name: da.navigation.zones, href: '/zoner' },
     { name: da.navigation.insights, href: '/indsigter' },
   ]
 
